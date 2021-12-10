@@ -6,11 +6,18 @@
 #define MILISECONDS_DEVIDER  ((uint64)1000)
 
 
+static uint64 LibTime_GetSystemTime()
+{
+    uint64 u64SystemTime = TIMER_ZERO;
+    u64SystemTime = esp_timer_get_time();
+    return u64SystemTime;
+}
+
 void LibTime_TimerStart(timer64 * u64Timer)
 {
     uint64 u64CurrentSystemTime = TIMER_ZERO;
     
-    u64CurrentSystemTime = esp_timer_get_time();
+    u64CurrentSystemTime = LibTime_GetSystemTime();
 
     *u64Timer = u64CurrentSystemTime;
 
@@ -27,7 +34,7 @@ boolean LibTime_CheckElapsed_MicroSeconds(timer64 u64Timer,uint64 u64Microsecond
     }
     else
     {
-        u64CurrentSystemTime = esp_timer_get_time();
+        u64CurrentSystemTime = LibTime_GetSystemTime();
         if( ( u64CurrentSystemTime - ((uint64)u64Timer) ) >= u64Microseconds )
         {
             bIsElapsed = cTrue;
@@ -53,7 +60,7 @@ boolean LibTime_CheckElapsed_MiliSeconds(timer64 u64Timer,uint32 u32Miliseconds)
     }
     else
     {
-        u64CurrentSystemTime = esp_timer_get_time();
+        u64CurrentSystemTime = LibTime_GetSystemTime();
         u32ElapsedMiliSeconds = (uint32)( ( u64CurrentSystemTime - ((uint64)u64Timer) ) / MILISECONDS_DEVIDER );
 
         if( u32ElapsedMiliSeconds >= u32Miliseconds )
@@ -82,7 +89,7 @@ boolean LibTime_CheckElapsed_Seconds(timer64 u64Timer,uint32 u16Seconds)
     }
     else
     {
-        u64CurrentSystemTime = esp_timer_get_time();
+        u64CurrentSystemTime = LibTime_GetSystemTime();
         u16ElapsedSeconds = (uint16)( ( u64CurrentSystemTime - ((uint64)u64Timer) ) / SECONDS_DEVIDER );
         if( u16ElapsedSeconds >= u16Seconds )
         {
@@ -117,3 +124,4 @@ boolean LibTime_IsTimerStarted(timer64 u64Timer)
 
     return  bIsStarted;
 }
+
