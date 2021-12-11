@@ -2,6 +2,8 @@
 #define _LIB_DEBUG_H_
 
 #include <Lib/BaseTypes.h>
+#include <stdio.h>
+#include <string.h>
 
 #ifndef DEBUG_LEVEL
 #define DEBUG_LEVEL eDebugHigh  /* Can be define as: eDebugNone,eDebugLow,eDebugMedium,eDebugHigh  NOTE: THIS SHOULD BE DEFINED AS BUILD FLAG aka defined in the build config*/ 

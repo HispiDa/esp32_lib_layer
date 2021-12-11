@@ -97,13 +97,12 @@ boolean LibTime_CheckElapsed_MiliSeconds(timer64 u64Timer,uint32 u32Miliseconds)
         if( u32ElapsedMiliSeconds >= u32Miliseconds )
         {
             bIsElapsed = cTrue;
-
-        }
-        else
-        {
             DEBUG_LEVEL_1("Timer elapsed!");
             //DEBUG_LEVEL_2("Timer elapsed!");
             //DEBUG_LEVEL_3("Timer elapsed!");
+        }
+        else
+        {
             bIsElapsed = cFalse;
         }
         
