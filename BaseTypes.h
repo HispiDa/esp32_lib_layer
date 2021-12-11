@@ -1,5 +1,5 @@
-#ifndef _BASE_TYPES_
-#define _BASE_TYPES_
+#ifndef _BASE_TYPES_H_
+#define _BASE_TYPES_H_
 
 /*
 ** 8 Bit Types
@@ -306,4 +306,7 @@ typedef signed long long sint64;
 #define MAXSINT64 ((sint64)0x7FFFFFFFFFFFFFFFU)
 #define MINSINT64 ((sint64)0x8000000000000000U)
 
-#endif
+
+
+
+#endif //ifndef _BASE_TYPES_H_
